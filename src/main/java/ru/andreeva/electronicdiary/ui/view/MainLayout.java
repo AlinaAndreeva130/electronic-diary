@@ -9,7 +9,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.theme.Theme;
-import ru.andreeva.electronicdiary.ui.view.entity.WeekdayView;
+import ru.andreeva.electronicdiary.ui.view.entity.DisciplineView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,7 +99,7 @@ public class MainLayout extends AppLayout {
     private List<RouterLink> createLinks() {
         MenuItemInfo[] menuItems = new MenuItemInfo[]{
                 new MenuItemInfo("Главная", "la la-file", MainView.class),
-                new MenuItemInfo("Расписание", "la la-file", WeekdayView.class)};
+                new MenuItemInfo("Расписание", "la la-file", DisciplineView.class)};
         List<RouterLink> links = new ArrayList<>();
         for (MenuItemInfo menuItemInfo : menuItems) {
             links.add(createLink(menuItemInfo));

@@ -1,12 +1,18 @@
 package ru.andreeva.electronicdiary.service.dao;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "weekday")
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Weekday {
     @Id
     @Column(name = "id", nullable = false)
@@ -14,21 +20,4 @@ public class Weekday {
 
     @Column(name = "name", nullable = false, length = 50)
     private String name;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
 }

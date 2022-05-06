@@ -1,10 +1,15 @@
 package ru.andreeva.electronicdiary.service.dao;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "note")
+@Getter
+@Setter
 public class Note {
     @Id
     @Column(name = "id", nullable = false)
@@ -23,45 +28,4 @@ public class Note {
 
     @Column(name = "content", nullable = false)
     private String content;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Weekday getWeekday() {
-        return weekday;
-    }
-
-    public void setWeekday(Weekday weekday) {
-        this.weekday = weekday;
-    }
-
-    public Discipline getDiscipline() {
-        return discipline;
-    }
-
-    public void setDiscipline(Discipline discipline) {
-        this.discipline = discipline;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
 }

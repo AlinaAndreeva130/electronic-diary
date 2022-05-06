@@ -9,14 +9,18 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.binder.Binder;
+import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.annotation.PostConstruct;
 import java.util.Arrays;
+import java.util.Comparator;
 
 
 public abstract class BaseEditor<T> extends Dialog {
+    @Getter
     private Binder<T> binder;
     private JpaRepository repository;
     private Class<T> entityClass;
@@ -36,6 +40,7 @@ public abstract class BaseEditor<T> extends Dialog {
             if (binder.getBean() == null) {
                 binder.setBean(createNewEntity());
             }
+            actionBeforeSave();
             repository.save(binder.getBean());
 
             actionAfterEdit.run();
@@ -106,6 +111,10 @@ public abstract class BaseEditor<T> extends Dialog {
     }
 
     protected void actionBeforeEdit() {
+
+    }
+
+    protected void actionBeforeSave() {
 
     }
 }

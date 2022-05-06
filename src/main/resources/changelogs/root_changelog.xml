@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
 
-    <changeSet id="1" author="knn">
+    <changeSet id="1" author="alina">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="discipline"/>
@@ -18,12 +18,12 @@
             <column name="name" type="VARCHAR(100)">
                 <constraints nullable="false"/>
             </column>
-            <column name="weekday_id" type="INT">
+            <column name="weekday_ids" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
-    <changeSet id="2" author="knn">
+    <changeSet id="2" author="alina">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="weekday"/>
@@ -38,7 +38,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet id="4" author="knn">
+    <changeSet id="4" author="alina">
         <preConditions onFail="MARK_RAN">
             <tableExists tableName="weekday"/>
         </preConditions>
@@ -46,7 +46,7 @@
             <column header="name" type="VARCHAR"/>
         </loadData>
     </changeSet>
-    <changeSet id="5" author="knn">
+    <changeSet id="5" author="alina">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="note"/>
@@ -69,44 +69,5 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-    </changeSet>
-    <changeSet id="6" author="knn">
-        <preConditions onFail="MARK_RAN">
-            <not>
-                <foreignKeyConstraintExists foreignKeyName="fk_discipline_weekday"/>
-            </not>
-        </preConditions>
-        <addForeignKeyConstraint baseColumnNames="weekday_id"
-                                 baseTableName="discipline"
-                                 constraintName="fk_discipline_weekday"
-                                 referencedColumnNames="id"
-                                 referencedTableName="weekday"
-                                 validate="true"/>
-    </changeSet>
-    <changeSet id="7" author="knn">
-        <preConditions onFail="MARK_RAN">
-            <not>
-                <foreignKeyConstraintExists foreignKeyName="fk_note_weekday"/>
-            </not>
-        </preConditions>
-        <addForeignKeyConstraint baseColumnNames="weekday_id"
-                                 baseTableName="note"
-                                 constraintName="fk_note_weekday"
-                                 referencedColumnNames="id"
-                                 referencedTableName="weekday"
-                                 validate="true"/>
-    </changeSet>
-    <changeSet id="8" author="knn">
-        <preConditions onFail="MARK_RAN">
-            <not>
-                <foreignKeyConstraintExists foreignKeyName="fk_note_discipline"/>
-            </not>
-        </preConditions>
-        <addForeignKeyConstraint baseColumnNames="discipline_id"
-                                 baseTableName="note"
-                                 constraintName="fk_note_discipline"
-                                 referencedColumnNames="id"
-                                 referencedTableName="discipline"
-                                 validate="true"/>
     </changeSet>
 </databaseChangeLog>

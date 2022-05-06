@@ -5,8 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.lang.Nullable;
-import ru.andreeva.electronicdiary.service.dao.Discipline;
-import ru.andreeva.electronicdiary.service.dao.Weekday;
+import ru.andreeva.electronicdiary.service.dao.Note;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -16,12 +15,12 @@ import javax.persistence.criteria.Root;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class WeekdaySpecification implements Specification<Weekday> {
+public class NoteSpecification implements Specification<Note> {
     private SearchCriteria criteria;
 
     @Override
     @Nullable
-    public Predicate toPredicate(Root<Weekday> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
+    public Predicate toPredicate(Root<Note> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
         if (criteria.getOperation().equalsIgnoreCase(">")) {
             return builder.greaterThanOrEqualTo(root.get(criteria.getKey()), criteria.getValue().toString());
         } else if (criteria.getOperation().equalsIgnoreCase("<")) {
